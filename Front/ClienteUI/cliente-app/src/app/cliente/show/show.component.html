@@ -1,0 +1,51 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()" data-backdrop="static" data-keyboard="false"
+>
+    Agregar cliente
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">=
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeClick()"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit [cli]="cli" *ngIf="ActivateAddEditCliComp"></app-add-edit>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Modal ent -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente ID</th>
+            <th>Nombre del cliente</th>
+            <th>Apellido del cliente</th>
+            <th>Direccion del Cliente</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of ClienteList">
+            <td>{{dataItem.ClienteID}}</td>
+            <td>{{dataItem.Nombre}}</td>
+            <td>{{dataItem.Apellido}}</td>
+            <td>{{dataItem.Direccion}}</td>
+            <td>
+                <button type="button" class="btn btn-primary mr-1"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="EditClick(dataItem)" data-backdrop="static" data-keyboard="false">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-primary ml-3">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
